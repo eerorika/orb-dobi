@@ -1,0 +1,17 @@
+---
+parameters:
+  dir:
+    type: string
+    default: ~/project
+  name:
+    type: string
+    default: ""
+  dobi-executable:
+    type: string
+    default: dobi
+
+steps:
+  - run: |
+      cd "<< dir >>"
+      "<< dobi-executable >>" "<< name >>"
+      cd -

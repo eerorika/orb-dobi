@@ -1,0 +1,18 @@
+# https://circleci.com/docs/2.0/configuration-reference/
+# https://circleci.com/dashboard
+---
+version: 2.1
+orbs:
+  orb-tools: circleci/orb-tools@volatile
+jobs:
+  build:
+    docker: [image: circleci/circleci-cli:alpine]
+    steps:
+      - checkout
+      #TODO use image with yamllint
+      #- run: yamllint -c .yamllint.yml src
+      - orb-tools/pack
+      - orb-tools/validate
+      - orb-tools/publish:
+          orb-ref: eerorika/dobi@dev:${CIRCLE_BRANCH}-${CIRCLE_SHA1:0:7}
+      # TODO integration test + publish production if master branch
