@@ -3,7 +3,7 @@ parameters:
   dir:
     type: string
     default: ~/project
-  name:
+  task:
     type: string
     default: ""
   dobi-executable:
@@ -13,5 +13,5 @@ parameters:
 steps:
   - run: |
       cd "<< dir >>"
-      "<< dobi-executable >>" "<< name >>"
+      "<< dobi-executable >>" "<< task >>"
       cd -
